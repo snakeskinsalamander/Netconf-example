@@ -21,11 +21,14 @@ with manager.connect(host=host, port=port, username=username, password=password,
     # This will be use for filtering interface
     xml_filter = '''
                 <filter>
-                    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+                    <interfaces>
                     </interfaces>
                 </filter>
                 '''
+
     # Get information from running command and use the filter so it will only get XML under interfaces
+    # You can remove the filter argument if you want to see the whole config in XML
+    # You can then get an idea of which elements you can filter
     result = m.get_config(source='running', filter=xml_filter)
 
     
